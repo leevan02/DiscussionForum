@@ -14,6 +14,13 @@
               <span class="menu-title">Users</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('discussion_type') }}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Discussion type</span>
+            </a>
+          </li>
           
           
           <li class="nav-item">

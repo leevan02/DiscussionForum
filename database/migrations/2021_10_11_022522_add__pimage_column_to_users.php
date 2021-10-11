@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiscussionTypeTable extends Migration
+class AddPimageColumnToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateDiscussionTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('discussion_type', function (Blueprint $table) {
-            $table->id();
-            $table->string('discussion_type');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('Pimage')->default('default.jpeg');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateDiscussionTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('discussion_type');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('Pimage');
+        });
     }
 }

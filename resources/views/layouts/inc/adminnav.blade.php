@@ -20,7 +20,7 @@
           </div>
         </li>
       </ul> --}}
-      {{-- <ul class="navbar-nav navbar-nav-right">
+      <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown">
           <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
             <i class="icon-bell mx-0"></i>
@@ -67,29 +67,45 @@
                 </p>
               </div>
             </a>
-          </div>
+          </div> 
         </li>
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-            <img src="images/faces/face28.jpg" alt="profile"/>
+            <img src="images/adminimage/profile_image/{{Auth::user()->Pimage}}" alt="profile"/>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+
+
+            <a class="dropdown-item" href="{{ url('admin_dashboard') }}">
+              Profile
+
+            </a>
             <a class="dropdown-item">
               <i class="ti-settings text-primary"></i>
               Settings
             </a>
-            <a class="dropdown-item">
-              <i class="ti-power-off text-primary"></i>
-              Logout
-            </a>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+                          <i class="ti-power-off text-primary"></i>
+
+             {{ __('Logout') }}
+         </a>
+
+
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+             @csrf
+         </form>
+
           </div>
-        </li>
+        </li>              
+
         <li class="nav-item nav-settings d-none d-lg-flex">
           <a class="nav-link" href="#">
             <i class="icon-ellipsis"></i>
           </a>
         </li>
-      </ul> --}}
+      </ul>
       <ul class="navbar-nav mr-lg-2">
       {{-- @guest
       @if (Route::has('login'))
@@ -104,23 +120,7 @@
           </li>
       @endif
   @else --}}
-      <li class="nav-item ">
-          <a  class="nav-link " href="{{ url('admin_dashboard') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }}
-          </a>
-       </li>
-          <li class="nav-item">
-
-              <a class="nav-link" href="{{ route('logout') }}"
-                 onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                  {{ __('Logout') }}
-              </a>
-
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                  @csrf
-              </form>
-    </li>
+      
     </ul>
 
 {{--     

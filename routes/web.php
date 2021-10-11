@@ -20,7 +20,21 @@ Route::middleware(['auth','admin'])->group(function () {
 
     Route::get('/admin_dashboard',[AdminController::class,'dashboard'])->name('admin_dashboard'); 
 
+
+    // <------users---> 
     Route::get('/users',[AdminController::class,'users']); 
+    Route::get('/userprofile/{id}',[AdminController::class,'userprofile']);
+    Route::get('/edituser/{id}',[AdminController::class,'edituser']);
+    Route::post('/editeduser/{id}',[AdminController::class,'editeduser']);
+    Route::get('/deleteuser/{id}',[AdminController::class,'deleteuser']);
+
+    // <-------discussion_type---------------->  
+    Route::get('/discussion_type',[AdminController::class,'discussion_type']);
+    Route::post('/adddiscussion',[AdminController::class,'adddiscussion']);
+    Route::get('/deletediscussion/{id}',[AdminController::class,'deletediscussion']);
+
+
+
 
 });
 

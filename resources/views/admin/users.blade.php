@@ -5,7 +5,8 @@
 
 
  <!-- partial:partials/_settings-panel.html -->
-    <div class="col-lg-12 grid-margin stretch-card">
+    <div class="col-lg-12 grid-margin stretch-card" style="margin-top:30px;">
+
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Striped Table</h4>
@@ -13,7 +14,7 @@
               Add class <code>.table-striped</code>
             </p>
             <div class="table-responsive">
-              <table class="table table-striped">
+              <table id="table" class="table table-striped" style="width: 100%;">
                 <thead>
                   <tr>
                     <th>
@@ -29,6 +30,9 @@
                     <th>
                         Email
                     </th>
+                    <th>
+                      Action
+                  </th>
                     
                   </tr>
                 </thead>
@@ -42,7 +46,7 @@
                       {{ $user->id }}
                     </td>
                     <td class="py-1">
-                      <img src="../../images/faces/face1.jpg" alt="image"/>
+                      <img src="images/adminimage/profile_image/{{$user->Pimage}}" alt="image"/>
                     </td>
                     <td>
                         {{ $user->name }}
@@ -51,17 +55,52 @@
                         {{ $user->email }}
                     </td>
                     
+                    <td>
+                      <div class="col-sm-12">
+                        <a class="btn btn-info " target="__blank" href="{{ url('userprofile', $user->id) }}">view</a>
+                      </div>
+                    </br>
+                  </br>
+                      <div class="col-sm-12">
+                        <a class="btn btn-info " style="background:red;" target="" href="{{ url('deleteuser', $user->id) }}">Delete</a>
+                      </div>
+                    </td>
                   </tr> @endforeach
      
         
              
             
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <th>
+                      #
+                    </th>
+                    <th>
+                    Profile
+                    </th>
+                    <th>
+                    Name
+
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                      Action
+                  </th>
+                    
+                  </tr>
+                </tfoot>
               </table>
             </div>
           </div>
         </div>
 
 
-
+        <script type="">
+          $(document).ready(function() {
+              $('#table').DataTable();
+          } );
+  </script>
     @endsection
